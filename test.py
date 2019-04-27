@@ -33,6 +33,8 @@ class TestPywwsMeasurement(unittest.TestCase):
         self.assertEqual(devices[2].sValue, "23.5;39.0;0")
         self.assertEqual(devices[3].nValue, 0)
         self.assertEqual(devices[3].sValue, "0;3.9")
+        self.assertEqual(devices[4].nValue, 0)
+        self.assertEqual(devices[4].sValue, "0;0;3.10;0;11.1")
         self.assertEqual(devices[5].nValue, 0)
         self.assertEqual(devices[5].sValue, "1.00;0")
         self.assertEqual(devices[6].nValue, 0)
