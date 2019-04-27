@@ -26,19 +26,19 @@ class DeviceIDMock:
 class TestPywwsMeasurement(unittest.TestCase):
     def testX(self):
         a = adapter.get(devices, DeviceIDMock, '/weather/pywws')
-        data = '{"wind_ave_mps": "3.10", "rainin": "0", "wind_ave_mph": "6.93", "hum_in": "39", "dailyrainin": "0.023622", "pressure_rel_inhg": "29.9523", "dailyrain": "0.6", "temp_out_f": "52.0", "temp_out_c": "11.1", "illuminance": "97.50", "rain_day_mm": "0.6", "illuminance_wm2": "0.49", "rain_last_hour_mm": "0.0", "pressure_abs_hpa": "1014.3000", "rain": "0", "rain_mm": "3.9", "rel_pressure": "1014.3000", "pressure_abs_inhg": "29.9523", "temp_in_f": "74.3", "temp_in_c": "23.5", "hum_out": "50", "illuminance_lux": "97.50", "rain_last_24hours_mm": "0.6", "idx": "2019-04-27 19:28:16", "wind_gust_mph": "10.74", "uv": "1.00", "pressure_rel_hpa": "1014.3000", "wind_gust_mps": "4.80", "wind_dir_degrees": "0"}'
+        data = '{"wind_ave_mps": "2.40", "rainin": "0", "wind_ave_mph": "5.37", "hum_in": "40", "pressure_rel_inhg": "29.9966", "dailyrain": "0.6", "temp_out_f": "48.2", "wind_chill": "7.70", "wind_dir_text": "N", "rain_last_hour_mm": "0.0", "temp_out_c": "9.0", "illuminance": "105.00", "rain_day_mm": "0.6", "illuminance_wm2": "0.53", "pressure_abs_inhg": "29.9966", "pressure_rel_hpa": "1015.8000", "pressure_abs_hpa": "1015.8000", "rain": "0", "rain_mm": "3.9", "wind_dir_degrees": "0", "temp_in_f": "73.0", "temp_in_c": "22.8", "hum_out": "65", "illuminance_lux": "105.00", "rain_last_24hours_mm": "0.6", "idx": "2019-04-27 21:58:16", "dew_point": "2.8", "wind_gust_mph": "9.84", "uv": "1.00", "dailyrainin": "0.023622", "wind_gust_mps": "4.40", "temp_out_realfeel_c": "5.8", "rel_pressure": "1015.8000"}'
         a.processData(data)
         self.assertEqual(len(devices), 6)
-        self.assertEqual(devices[1].sValue, "11.1;50.0;0")
-        self.assertEqual(devices[2].sValue, "23.5;39.0;0")
+        self.assertEqual(devices[1].sValue, "9.0;65.0;0")
+        self.assertEqual(devices[2].sValue, "22.8;40.0;0")
         self.assertEqual(devices[3].nValue, 0)
         self.assertEqual(devices[3].sValue, "0;3.9")
         self.assertEqual(devices[4].nValue, 0)
-        self.assertEqual(devices[4].sValue, "0;0;3.10;0;11.1;0")
+        self.assertEqual(devices[4].sValue, "0;N;2.40;0;9.0;7.70")
         self.assertEqual(devices[5].nValue, 0)
         self.assertEqual(devices[5].sValue, "1.00;0")
         self.assertEqual(devices[6].nValue, 0)
-        self.assertEqual(devices[6].sValue, "97.50")
+        self.assertEqual(devices[6].sValue, "105.00")
 
 if __name__ == '__main__':
     unittest.main()
