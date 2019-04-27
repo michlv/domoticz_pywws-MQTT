@@ -66,7 +66,7 @@ class Adapter:
         self.updateTempHum(1, jdata['temp_out_c'], jdata['hum_out'])
         self.updateTempHum(2, jdata['temp_in_c'], jdata['hum_in'])
         self.devices[3].Update(0, ";".join(['0', jdata['rain_mm']]))
-        self.devices[4].Update(0, ";".join(['0', '0', jdata['wind_ave_mps'], '0', jdata['temp_out_c']]))
+        self.devices[4].Update(0, ";".join(['0', '0', jdata['wind_ave_mps'], '0', jdata['temp_out_c'], '0']))
         self.devices[5].Update(0, ";".join([jdata['uv'], '0']))
         self.devices[6].Update(0, jdata['illuminance_lux'])
 
