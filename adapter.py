@@ -63,12 +63,15 @@ class Adapter:
         
     def adjWind(self, data):
         return str(float(data)*10.0)
+
+    def adjRainRate(self, data):
+        return str(float(data)*100.0)
         
     def processData(self, data):
         jdata = json.loads(data)
         self.updateTempHum(1, jdata['temp_out_c'], jdata['hum_out'])
         self.updateTempHum(2, jdata['temp_in_c'], jdata['hum_in'])
-        self.devices[3].Update(0, ";".join(['0', jdata['rain_mm']]))
+        self.devices[3].Update(0, ";".join([self.adjRainRate(jdata['rain_last_hour_mm']), jdata['rain_mm']]))
         self.devices[4].Update(0, ";".join([jdata['wind_dir_degrees'],
                                             jdata['wind_dir_text'],
                                             self.adjWind(jdata['wind_ave_mps']),
