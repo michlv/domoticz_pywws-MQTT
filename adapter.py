@@ -77,7 +77,7 @@ class Adapter:
                                             self.adjWind(jdata['wind_ave_mps']),
                                             self.adjWind(jdata['wind_gust_mps']),
                                             jdata['temp_out_c'],
-                                            jdata['wind_chill']]))
+                                            jdata['wind_chill_c']]))
         self.devices[5].Update(0, ";".join([jdata['uv'], '0']))
         self.devices[6].Update(0, jdata['illuminance_lux'])
 
