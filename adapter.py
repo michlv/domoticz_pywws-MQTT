@@ -22,7 +22,8 @@ class Adapter:
         ['Rain', 'Rain'],
         ['Wind', 'Wind'],
         ['UV', 'UV'],
-        ['Illumination', 'Illumination']
+        ['Illumination', 'Illumination'],
+        ['Solar Radiation', 'Solar Radiation']
     ]
         
     def checkDevices(self):
@@ -80,4 +81,5 @@ class Adapter:
                                             jdata['wind_chill_c']]))
         self.devices[5].Update(0, ";".join([jdata['uv'], '0']))
         self.devices[6].Update(0, jdata['illuminance_lux'])
+        self.devices[7].Update(0, jdata['illuminance_wm2'])
 
