@@ -23,7 +23,8 @@ class Adapter:
         ['Wind', 'Wind'],
         ['UV', 'UV'],
         ['Illumination', 'Illumination'],
-        ['Solar Radiation', 'Solar Radiation']
+        ['Solar Radiation Est', 'Solar Radiation'],
+        ['Solar Radiation Disp', 'Solar Radiation']
     ]
         
     def checkDevices(self):
@@ -82,4 +83,4 @@ class Adapter:
         self.devices[5].Update(0, ";".join([jdata['uv'], '0']))
         self.devices[6].Update(0, jdata['illuminance_lux'])
         self.devices[7].Update(0, jdata['illuminance_wm2'])
-
+        self.devices[8].Update(0, str(float(jdata['illuminance_lux'])/683.0))
