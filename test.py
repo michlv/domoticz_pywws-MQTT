@@ -28,7 +28,7 @@ class TestPywwsMeasurement(unittest.TestCase):
         a = adapter.get(devices, DeviceIDMock, '/weather/pywws')
         data = '{"wind_ave_mps": "2.40", "wind_ave_mph": "5.37", "hum_in": "40", "pressure_rel_inhg": "29.9966", "temp_out_f": "48.2", "wind_chill_c": "7.70", "wind_dir_text": "N", "rain_last_hour_mm": "0.3", "temp_out_c": "9.0", "rain_day_mm": "0.6", "illuminance_wm2": "0.53", "pressure_abs_inhg": "29.9966", "pressure_rel_hpa": "1015.8000", "pressure_abs_hpa": "1015.8000", "rain_mm": "3.9", "wind_dir_degrees": "0", "temp_in_f": "73.0", "temp_in_c": "22.8", "hum_out": "65", "illuminance_lux": "105.00", "rain_last_24hours_mm": "0.6", "idx": "2019-04-27 21:58:16", "dew_point_c": "2.8", "wind_gust_mph": "9.84", "uv": "1.00", "wind_gust_mps": "4.40", "temp_out_realfeel_c": "5.8"}'
         a.processData(data)
-        self.assertEqual(len(devices), 8)
+        self.assertEqual(len(devices), 9)
         self.assertEqual(devices[1].sValue, "9.0;65.0;0")
         self.assertEqual(devices[2].sValue, "22.8;40.0;0")
         self.assertEqual(devices[3].nValue, 0)
@@ -43,6 +43,8 @@ class TestPywwsMeasurement(unittest.TestCase):
         self.assertEqual(devices[7].sValue, "0.53")
         self.assertEqual(devices[8].nValue, 0)
         self.assertEqual(devices[8].sValue, "0.15373352855051245")
+        self.assertEqual(devices[9].nValue, 0)
+        self.assertEqual(devices[9].sValue, "0.8277493102089082")
 
 if __name__ == '__main__':
     unittest.main()
